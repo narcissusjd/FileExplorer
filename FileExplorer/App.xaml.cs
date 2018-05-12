@@ -4,6 +4,7 @@ using System.Configuration;
 using System.Data;
 using System.Linq;
 using System.Windows;
+using Telerik.Windows.Controls;
 
 namespace FileExplorer
 {
@@ -14,7 +15,8 @@ namespace FileExplorer
     {
         public App()
         {
-           this.InitializeComponent();
+            StyleManager.ApplicationTheme = ThemeManager.FromName("Windows8");
+            this.InitializeComponent();
         }
     }
 }
