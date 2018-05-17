@@ -1,0 +1,22 @@
+﻿<telerik:RadListBoxItem x:Class="FileExplorer.View.FileItemView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+             xmlns:viewmodel="clr-namespace:FileExplorer.ViewModel"
+             mc:Ignorable="d"
+             DataContext="{Binding}"
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Image Height="18" Source="{Binding IconSource}"></Image>
+        <Label Grid.Column="1" Content="{Binding Header}"></Label>
+    </Grid>
+    <telerik:EventToCommandBehavior.EventBindings>
+        <telerik:EventBinding Command="{Binding MouseDoubleClickCommand}" EventName="MouseDoubleClick" PassEventArgsToCommand="True" RaiseOnHandledEvents="True"/>
+    </telerik:EventToCommandBehavior.EventBindings>
+</telerik:RadListBoxItem>

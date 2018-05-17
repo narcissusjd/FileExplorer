@@ -2,6 +2,7 @@
 using FileExplorer.ViewModel;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows;
@@ -29,7 +30,27 @@ namespace FileExplorer
 
         private void DirectoryTreeView_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
-            (flv_FileList.DataContext as FileListViewModel).ParentDirectory = (sender as DirectoryTreeView).SelectDirectory;
+            if(e.PropertyName=="SelectedDirectory")
+            {
+                DirectoryInfo di = (sender as DirectoryTreeView).SelectedDirectory;
+                CurrentDirectoryChanged(sender, di);
+            }
+
+        }
+
+
+        private void CurrentDirectoryChanged(object sender,DirectoryInfo info)
+        {
+            if (sender is DirectoryTreeView)
+            {
+                (flv_FileList.DataContext as FileListViewModel).ParentDirectory = (sender as DirectoryTreeView).SelectedDirectory;
+            }
+            else if (sender is FileListView)
+            {
+
+            }
+            else if(true)
+            { }
         }
     }
 }

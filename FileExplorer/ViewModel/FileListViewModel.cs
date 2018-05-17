@@ -35,6 +35,8 @@ namespace FileExplorer.ViewModel
         {
             view = view_;
             items = new ObservableCollection<FileListItem>();
+            this.SelectionChangedCommand = new DelegateCommand(OnSelectionChangedCommandExecuted);
+            this.MouseDoubleClickCommand = new DelegateCommand(OnMouseDoubleClickCommandExecuted);
         }
 
         private void LoadFiles(DirectoryInfo parent)

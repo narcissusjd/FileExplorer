@@ -1,5 +1,4 @@
-﻿using FileExplorer.ViewModel;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,18 +16,13 @@ using Telerik.Windows.Controls;
 namespace FileExplorer.View
 {
     /// <summary>
-    /// FileListView.xaml 的交互逻辑
+    /// FileItemView.xaml 的交互逻辑
     /// </summary>
-    public partial class FileListView : RadPane
+    public partial class FileItemView : RadListBoxItem
     {
-        FileListViewModel viewModel;
-        public static DependencyProperty PressedImageProperty;//依赖属性
-        public FileListView()
+        public FileItemView()
         {
             InitializeComponent();
-            viewModel = new FileListViewModel(this);
-            this.DataContext = viewModel;
-
         }
     }
 }

@@ -5,7 +5,10 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Media.Imaging;
+using Telerik.Windows.Controls;
 
 namespace FileExplorer.ViewModel
 {
@@ -29,6 +32,26 @@ namespace FileExplorer.ViewModel
             catch
             { }
             Items.Add(item);
+        }
+
+        public ICommand SelectionChangedCommand { get; set; }
+
+        private void OnSelectionChangedCommandExecuted(object obj)
+        {
+
+        }
+
+        public ICommand MouseDoubleClickCommand { get; set; }
+
+        private void OnMouseDoubleClickCommandExecuted(object obj)
+        {
+            var sender = (obj as MouseButtonEventArgs).OriginalSource;
+            if(sender is RadListBoxItem)
+            {
+                FileListItem item = (sender as RadListBox).DataContext as FileListItem;
+                (obj as MouseButtonEventArgs).Handled = true;
+            }
+            
         }
     }
 }

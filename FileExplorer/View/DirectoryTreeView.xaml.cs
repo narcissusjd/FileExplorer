@@ -21,9 +21,9 @@ namespace FileExplorer.View
     /// <summary>
     /// DirectoryTreeView.xaml 的交互逻辑
     /// </summary>
-    public partial class DirectoryTreeView : UserControl,INotifyPropertyChanged
+    public partial class DirectoryTreeView : UserControl, INotifyPropertyChanged
     {
-        public DirectoryInfo SelectDirectory
+        public DirectoryInfo SelectedDirectory
         {
             get
             {
@@ -34,9 +34,6 @@ namespace FileExplorer.View
                 (this.DataContext as DirectoryTreeViewModel).SelectedDirectory = value;
             }
         }
-
-
-        
 
         #region INotifyPropertyChanged
         public event PropertyChangedEventHandler PropertyChanged;
@@ -57,7 +54,7 @@ namespace FileExplorer.View
 
         private void DirectoryTreeView_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            NotifyPropertyChanged("SelectDirectory");
+            NotifyPropertyChanged("SelectedDirectory");
         }
     }
 }
