@@ -38,7 +38,7 @@ namespace FileExplorer.ViewModel
 
         private void OnSelectionChangedCommandExecuted(object obj)
         {
-
+            
         }
 
         public ICommand MouseDoubleClickCommand { get; set; }

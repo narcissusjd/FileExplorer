@@ -10,14 +10,24 @@
                  DataContext="{Binding}" Header="{Binding ParentDirectory.Name}"
                 d:DesignHeight="300" d:DesignWidth="300">
     <telerik:RadPane.Resources>
-        <ControlTemplate x:Key="RadListBoxItem" TargetType="telerik:RadListBoxItem">
-            <view:FileItemView></view:FileItemView>
-        </ControlTemplate>
-        <DataTemplate x:Key="DataTemplate1">
-            <view:FileItemView></view:FileItemView>
-        </DataTemplate>
+        <Style x:Name="RadListItemStyle" TargetType="telerik:RadListBoxItem">
+            <Setter Property="ContentTemplate">
+                <Setter.Value>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="20"></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Image Height="18" Source="{Binding IconSource}"></Image>
+                            <Label Grid.Column="1" Content="{Binding Header}"></Label>
+                        </Grid>
+                    </DataTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </telerik:RadPane.Resources>
-    <telerik:RadListBox x:Name="rlb_FileList" DataContext="{Binding}" ItemsSource="{Binding Items}" ItemTemplate="{DynamicResource DataTemplate1}" >
+    <telerik:RadListBox x:Name="rlb_FileList" DataContext="{Binding}" ItemsSource="{Binding Items}" ItemContainerStyle="{DynamicResource RadListItemStyle}" >
         <telerik:EventToCommandBehavior.EventBindings>
             <telerik:EventBinding Command="{Binding SelectionChangedCommand}" EventName="SelectionChanged" PassEventArgsToCommand="True"/>
         </telerik:EventToCommandBehavior.EventBindings>
